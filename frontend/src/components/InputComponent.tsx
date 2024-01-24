@@ -1,6 +1,11 @@
 import jsonCountries from "./countries";
 import React, { useEffect, useState } from "react";
 
+interface InputComponentProps {
+    selectedOption: string[];
+    onOptionChange: (selectedValue: string) => void;
+}
+
 const continents = [
     { name: "Africa", value: "Africa" },
     { name: "Asia", value: "Asia" },
@@ -10,8 +15,12 @@ const continents = [
     { name: "South America", value: "South America" },
 ];
 
-const InputComponent = () => {
+const InputComponent: React.FC<InputComponentProps> = ({
+    selectedOption,
+    onOptionChange,
+}) => {
     const [selectedContinent, setSelectedContinent] = useState<string>("");
+    const [selectedCountry, setSelectedCountry] = useState<string>("");
     const [filteredCountries, setFilteredCountries] = useState(jsonCountries);
 
     useEffect(() => {
@@ -22,6 +31,7 @@ const InputComponent = () => {
             : jsonCountries;
 
         setFilteredCountries(filteredCountries);
+        console.log(selectedOption);
     }, [selectedContinent]);
 
     const handleContinentChange = (
@@ -29,7 +39,15 @@ const InputComponent = () => {
     ) => {
         const selectedContinent = event.target.value;
         setSelectedContinent(selectedContinent);
-        console.log(selectedContinent);
+        onOptionChange(selectedContinent);
+    };
+
+    const handleCountryChange = (
+        event: React.ChangeEvent<HTMLSelectElement>
+    ) => {
+        const selectedCountry = event.target.value;
+        setSelectedCountry(selectedCountry);
+        onOptionChange(selectedCountry);
     };
 
     return (
@@ -41,9 +59,7 @@ const InputComponent = () => {
                 value={selectedContinent}
                 onChange={handleContinentChange}
             >
-                <option value="" disabled>
-                    Kontinent...
-                </option>
+                <option value="whole_">Hele verden</option>
                 {continents.map((continent) => (
                     <option key={continent.value} value={continent.value}>
                         {continent.name}
@@ -51,18 +67,23 @@ const InputComponent = () => {
                 ))}
             </select>
             <label htmlFor="country">Land</label>
-            <select name="country" id="country">
+            <select
+                name="country"
+                id="country"
+                value={selectedCountry}
+                onChange={handleCountryChange}
+            >
                 <option value="" disabled>
                     Land...
                 </option>
                 {filteredCountries.map((country) => (
-                    <option key={country.cca3} value={country.cca3}>
+                    <option key={country.cca3} value={country.country}>
                         {country.country}
                     </option>
                 ))}
             </select>
-            <button>Se data</button>
         </div>
     );
 };
+
 export default InputComponent;

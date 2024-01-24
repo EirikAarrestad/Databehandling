@@ -11,7 +11,7 @@ interface PopulationDataItem {
     population: number;
 }
 
-const Choloropleth = () => {
+const Choloropleth: React.FC = ({}) => {
     const [populationData, setPopulationData] = useState<PopulationDataItem[]>(
         []
     );
@@ -49,6 +49,12 @@ const Choloropleth = () => {
                         ),
                         hoverinfo: "text",
                         hovertemplate: "<b>%{text}</b><extra></extra>",
+                        marker: {
+                            line: {
+                                color: "#1a1a1a",
+                                width: 1,
+                            },
+                        },
                         colorscale: "Rainbow",
                     },
                 ]}

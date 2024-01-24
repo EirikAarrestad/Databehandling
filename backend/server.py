@@ -1,5 +1,5 @@
 import pandas as pd
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -81,6 +81,23 @@ def get_population_data():
     """
     data = df_filtered.to_dict(orient="records")
     return jsonify(data)
+
+
+@app.route("/get_country_population_data")
+def get_country_population_data():
+    """
+    Retrieve population data for the specified continent and the year 2023.
+
+    Returns:
+    - jsonify: JSON response containing population data for the specified continent and year 2023.
+    """
+    continent = request.args.get("continent")
+
+    filtered_data = df_processed[
+        (df_processed["continent"] == continent) & (df_processed["year"] == "2023")
+    ].to_dict(orient="records")
+
+    return jsonify(filtered_data)
 
 
 if __name__ == "__main__":
