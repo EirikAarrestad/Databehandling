@@ -1,5 +1,5 @@
 import "./App.css";
-import Choloropleth from "./components/WorldCholoropleth";
+import Choloropleth from "./components/Choloropleth";
 import React, { useState } from "react";
 import InputComponent from "./components/InputComponent";
 import ContinentCholoropleth from "./components/CountryCholoropleth";

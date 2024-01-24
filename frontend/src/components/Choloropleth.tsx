@@ -15,6 +15,7 @@ const Choloropleth: React.FC = ({}) => {
     const [populationData, setPopulationData] = useState<PopulationDataItem[]>(
         []
     );
+
     useEffect(() => {
         const fetchData = async () => {
             try {

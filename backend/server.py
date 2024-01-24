@@ -2,7 +2,9 @@ import pandas as pd
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
+# bruker flask serverer til en backsend som kan behandle dataene fra .CSV filen og fra frontenden
 app = Flask(__name__)
+# tillater Cross Origin Resource Sharing (CORS) så vi kan sende data mellom servere
 CORS(app)
 
 
@@ -54,6 +56,54 @@ def filter_data_by_year(df, target_year):
     return df.query(f"year=='{target_year}'")
 
 
+@app.route("/continent_growth")
+def continent_growth_data():
+    chart_data = (
+        df.groupby("continent")[
+            [
+                "2023",
+                "2022",
+                "2020",
+                "2015",
+                "2010",
+                "2000",
+                "1990",
+                "1980",
+                "1970",
+            ]
+        ]
+        .sum()
+        .reset_index()
+        .to_dict(orient="records")
+    )
+    return jsonify(chart_data)
+
+
+@app.route("/country_growth")
+def country_growth_data():
+    country = request.args.get("country")
+
+    country_data = (
+        df[df["country"] == country][
+            [
+                "2023",
+                "2022",
+                "2020",
+                "2015",
+                "2010",
+                "2000",
+                "1990",
+                "1980",
+                "1970",
+            ]
+        ]
+        .sum()
+        .to_dict()
+    )
+
+    return jsonify(country_data)
+
+
 @app.route("/api/chart_data")
 def get_chart_data():
     """
@@ -63,7 +113,7 @@ def get_chart_data():
     - jsonify: JSON response containing aggregated chart data.
     """
     chart_data = (
-        df.groupby("continent")["2023 population"]
+        df.groupby("continent")["2023"]
         .sum()
         .reset_index(name="Population")
         .to_dict(orient="records")
