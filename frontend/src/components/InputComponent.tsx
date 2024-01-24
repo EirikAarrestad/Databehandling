@@ -24,11 +24,12 @@ const InputComponent: React.FC<InputComponentProps> = ({
     const [filteredCountries, setFilteredCountries] = useState(jsonCountries);
 
     useEffect(() => {
-        const filteredCountries = selectedContinent
-            ? jsonCountries.filter(
-                  (country) => country.continent === selectedContinent
-              )
-            : jsonCountries;
+        const filteredCountries =
+            selectedContinent == "whole_"
+                ? jsonCountries
+                : jsonCountries.filter(
+                      (country) => country.continent === selectedContinent
+                  );
 
         setFilteredCountries(filteredCountries);
         console.log(selectedOption);
@@ -47,7 +48,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
     ) => {
         const selectedCountry = event.target.value;
         setSelectedCountry(selectedCountry);
-        onOptionChange(selectedCountry);
+        console.log(selectedCountry);
     };
 
     return (
