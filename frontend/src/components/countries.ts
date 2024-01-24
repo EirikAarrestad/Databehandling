@@ -1,4 +1,10 @@
-const jsonCountries = [
+interface Country {
+    country: string;
+    cca3: string;
+    continent: string;
+}
+
+const jsonCountries: Country[] = [
     {
         country: "India",
         cca3: "IND",
