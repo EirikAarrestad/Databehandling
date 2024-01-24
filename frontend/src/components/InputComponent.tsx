@@ -1,6 +1,8 @@
 import jsonCountries from "./countries";
 import React, { useEffect, useState } from "react";
 
+//"MAIN"
+
 interface InputComponentProps {
     selectedOption: string[];
     onOptionChange: (selectedValue: string) => void;
