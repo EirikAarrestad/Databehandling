@@ -58,6 +58,12 @@ def filter_data_by_year(df, target_year):
 
 @app.route("/continent_growth")
 def continent_growth_data():
+    """
+    Retrieve continent growth data.
+
+    Returns:
+    - jsonify: JSON response containing aggregated continent growth data.
+    """
     chart_data = (
         df.groupby("continent")[
             [
@@ -81,6 +87,12 @@ def continent_growth_data():
 
 @app.route("/country_growth")
 def country_growth_data():
+    """
+    Retrieve country growth data.
+
+    Returns:
+    - jsonify: JSON response containing aggregated country growth data.
+    """
     country = request.args.get("country")
 
     country_data = (
