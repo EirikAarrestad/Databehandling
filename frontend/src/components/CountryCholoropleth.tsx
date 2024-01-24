@@ -9,13 +9,13 @@ interface PopulationData {
     population: number;
 }
 
-const formatNumber = format(",");
-
-interface xprops {
+interface ContinentCholoroplethProps {
     continent: string;
 }
 
-const ContinentCholoropleth: React.FC<xprops> = (continent) => {
+const ContinentCholoropleth: React.FC<ContinentCholoroplethProps> = (
+    continent
+) => {
     const [populationData, setPopulationData] = useState<PopulationData[]>([]);
 
     useEffect(() => {
@@ -38,6 +38,8 @@ const ContinentCholoropleth: React.FC<xprops> = (continent) => {
 
         fetchData();
     }, [continent]);
+
+    const formatNumber = format(",");
 
     return (
         <Plot

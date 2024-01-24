@@ -1,8 +1,8 @@
 import "./App.css";
-import Choloropleth from "./components/Choloropleth";
+import Choloropleth from "./components/WorldCholoropleth";
 import React, { useState } from "react";
 import InputComponent from "./components/InputComponent";
-import ContinentCholoropleth from "./components/CountryC";
+import ContinentCholoropleth from "./components/CountryCholoropleth";
 
 const App: React.FC = () => {
     const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
