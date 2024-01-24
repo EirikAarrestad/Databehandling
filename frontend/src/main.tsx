@@ -7,6 +7,6 @@ import CountryGrowth from "./components/CountryGrowth.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
-        <CountryGrowth />
+        <CountryGrowth country="Albania" />
     </React.StrictMode>
 );

@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Plot from "react-plotly.js";
 import { format } from "d3-format";
 
-const CountryGrowth = () => {
+interface CountryGrowthProps {
+    country: string;
+}
+
+const CountryGrowth: React.FC<CountryGrowthProps> = ({ country }) => {
     const [data, setData] = useState<number>();
 
     useEffect(() => {
@@ -13,7 +17,7 @@ const CountryGrowth = () => {
                     "http://localhost:5000/country_growth",
                     {
                         params: {
-                            country: "Iceland",
+                            country: country,
                         },
                     }
                 );
@@ -51,7 +55,7 @@ const CountryGrowth = () => {
                     },
                 ]}
                 layout={{
-                    title: `Population Growth of India Over the Years`,
+                    title: `Population Growth of ${country} Over the Years`,
                     xaxis: { title: "Year" },
                     yaxis: { title: "Population" },
                 }}
