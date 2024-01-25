@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Plot from "react-plotly.js";
 import { format } from "d3-format";
+import ContinentGrowth from "./ContinentGrowth";
 
 interface PopulationDataItem {
     country: string;
@@ -34,7 +35,7 @@ const Choloropleth: React.FC = ({}) => {
     const formatNumber = format(",");
 
     return (
-        <div>
+        <div className="continents">
             <Plot
                 data={[
                     {
@@ -76,6 +77,7 @@ const Choloropleth: React.FC = ({}) => {
                     },
                 }}
             />
+            <ContinentGrowth />
         </div>
     );
 };

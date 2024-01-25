@@ -62,6 +62,11 @@ const ContinentGrowth = () => {
                     title: "Population Growth Over the Years",
                     xaxis: { title: "Year" },
                     yaxis: { title: "Population" },
+                    paper_bgcolor: "#1a1a1a",
+                    font: {
+                        color: "white",
+                        family: "Work Sans, sans-serif",
+                    },
                 }}
             />
         </div>

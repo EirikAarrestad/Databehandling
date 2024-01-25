@@ -50,6 +50,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
     ) => {
         const selectedCountry = event.target.value;
         setSelectedCountry(selectedCountry);
+        onOptionChange(selectedCountry);
         console.log(selectedCountry);
     };
 
@@ -76,9 +77,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
                 value={selectedCountry}
                 onChange={handleCountryChange}
             >
-                <option value="" disabled>
-                    Land...
-                </option>
+                <option value="all_">Se alle land...</option>
                 {filteredCountries.map((country) => (
                     <option key={country.cca3} value={country.country}>
                         {country.country}
