@@ -28,7 +28,7 @@ const CountryGrowth: React.FC<CountryGrowthProps> = ({ country }) => {
             }
         };
         fetchData();
-    }, []);
+    }, [country]);
 
     const formatNumber = format(",");
     console.log(data);

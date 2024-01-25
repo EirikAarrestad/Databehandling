@@ -2,10 +2,12 @@ import "./App.css";
 import Choloropleth from "./components/Choloropleth";
 import React, { useState } from "react";
 import InputComponent from "./components/InputComponent";
-import ContinentCholoropleth from "./components/CountryCholoropleth";
+import ContinentCholoropleth from "./components/CountryCholoropleth"; // Corrected typo
+import CountryGrowth from "./components/CountryGrowth";
 
 const App: React.FC = () => {
     const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+    const [selectedCountry, setSelectedCountry] = useState<string>("");
 
     const handleOptionChange = (selectedValue: string) => {
         setSelectedOptions((prevSelectedOptions) => [
@@ -13,11 +15,28 @@ const App: React.FC = () => {
             selectedValue,
         ]);
     };
+
+    const continents = [
+        "Africa",
+        "Antarctica",
+        "Asia",
+        "Europe",
+        "North America",
+        "Oceania",
+        "South America",
+        "all_",
+        "whole_",
+    ];
+
     const handleButtonClick = () => {
-        console.log(
-            "Selected Options:",
-            selectedOptions[selectedOptions.length - 1]
-        );
+        const lastSelectedOption = selectedOptions[selectedOptions.length - 1];
+
+        setSelectedCountry(lastSelectedOption);
+        console.log("Selected Country:", selectedCountry);
+    };
+
+    const isContinent = (country: string): boolean => {
+        return continents.includes(country);
     };
 
     return (
@@ -35,15 +54,15 @@ const App: React.FC = () => {
                 <button onClick={handleButtonClick}>Se data</button>
             </div>
             <div>
-                {selectedOptions.length > 0 ? (
-                    selectedOptions[selectedOptions.length - 1] === "whole_" ? (
+                {selectedCountry ? (
+                    selectedCountry === "whole_" ||
+                    selectedCountry === "all_" ||
+                    !selectedCountry ? (
                         <Choloropleth />
+                    ) : isContinent(selectedCountry) ? (
+                        <ContinentCholoropleth continent={selectedCountry} />
                     ) : (
-                        <ContinentCholoropleth
-                            continent={
-                                selectedOptions[selectedOptions.length - 1]
-                            }
-                        />
+                        <CountryGrowth country={selectedCountry} />
                     )
                 ) : (
                     <Choloropleth />
