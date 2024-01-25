@@ -2,7 +2,7 @@ import "./App.css";
 import Choloropleth from "./components/Choloropleth";
 import React, { useState } from "react";
 import InputComponent from "./components/InputComponent";
-import ContinentCholoropleth from "./components/CountryCholoropleth"; // Corrected typo
+import ContinentCholoropleth from "./components/CountryCholoropleth"; 
 import CountryGrowth from "./components/CountryGrowth";
 
 const App: React.FC = () => {

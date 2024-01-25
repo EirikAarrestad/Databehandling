@@ -34,7 +34,7 @@ const CountryGrowth: React.FC<CountryGrowthProps> = ({ country }) => {
     console.log(data);
 
     if (!data) {
-        return <div>Loading...</div>;
+        return;
     }
 
     return (
