@@ -6,6 +6,6 @@ import Slideshow from "./components/Slideshow.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
-        <Slideshow />
+        <App />
     </React.StrictMode>
 );

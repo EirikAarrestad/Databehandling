@@ -8,8 +8,12 @@
 }
 
 .grid-container {
+    /*
+    
     display: grid;
     grid-template-columns: 2fr 1fr;
+    
+    */
 
     h2 {
         margin-top: 20px;
@@ -34,7 +38,6 @@
         select {
             display: block;
         }
-
         select {
             width: 130px;
             padding: 5px 10px;
@@ -57,7 +60,6 @@
     text-align: left;
     border: 2px solid black;
 }
-
 .continents {
     margin-top: -30px;
 }

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import InputComponent from "./components/InputComponent";
 import ContinentCholoropleth from "./components/CountryCholoropleth";
 import CountryGrowth from "./components/CountryGrowth";
+import Slideshow from "./components/Slideshow";
 
 const App: React.FC = () => {
     const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
@@ -58,14 +59,14 @@ const App: React.FC = () => {
                     selectedCountry === "whole_" ||
                     selectedCountry === "all_" ||
                     !selectedCountry ? (
-                        <Choloropleth />
+                        <Slideshow />
                     ) : isContinent(selectedCountry) ? (
                         <ContinentCholoropleth continent={selectedCountry} />
                     ) : (
                         <CountryGrowth country={selectedCountry} />
                     )
                 ) : (
-                    <Choloropleth />
+                    <Slideshow />
                 )}
             </div>
         </div>

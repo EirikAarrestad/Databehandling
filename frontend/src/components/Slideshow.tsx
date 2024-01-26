@@ -1,10 +1,12 @@
+import React from "react";
 import "react-slideshow-image/dist/styles.css";
 import { Slide } from "react-slideshow-image";
-import CountryGrowth from "./CountryGrowth";
+import ContinentGrowth from "./ContinentGrowth";
+import Choloropleth from "./Choloropleth";
+import styles from "./Slideshow.module.scss";
 
 const spanStyle = {
     padding: "20px",
-    background: "#efefef",
     color: "#000000",
 };
 
@@ -13,42 +15,43 @@ const divStyle = {
     alignItems: "center",
     justifyContent: "center",
     backgroundSize: "cover",
-    height: "400px",
+    height: "500px",
+    position: "relative",
 };
 
 const slideImages = [
     {
-        location: "Norway",
-        caption: "Slide 1",
+        caption: <ContinentGrowth />,
     },
     {
-        location: "Iceland",
-        caption: "Slide 2",
-    },
-    {
-        location: "Denmark",
-        caption: "Slide 3",
+        caption: <Choloropleth />,
     },
 ];
 
+const arrowStyle = {
+    fontSize: "24px",
+    color: "red",
+    marginLeft: "200px",
+    marginRight: "200px",
+};
+
 const Slideshow = () => {
     return (
-        <div className="slide-container">
-            <Slide>
-                {slideImages.map((item) => (
-                    <div>
-                        <div
-                            style={{
-                                ...divStyle,
-                            }}
-                        >
-                            <span style={spanStyle}>
-                                <CountryGrowth country={item.location} />
-                            </span>
+        <div className={styles.container}>
+            <div className="slide-container">
+                <Slide
+                    prevArrow={<div style={arrowStyle}>{"<-"}</div>}
+                    nextArrow={<div style={arrowStyle}>{"->"}</div>}
+                >
+                    {slideImages.map((item, index) => (
+                        <div key={index}>
+                            <div className={styles.divStyle}>
+                                <span style={spanStyle}>{item.caption}/</span>
+                            </div>
                         </div>
-                    </div>
-                ))}
-            </Slide>
+                    ))}
+                </Slide>
+            </div>
         </div>
     );
 };

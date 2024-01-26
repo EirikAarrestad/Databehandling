@@ -77,7 +77,6 @@ const Choloropleth: React.FC = ({}) => {
                     },
                 }}
             />
-            <ContinentGrowth />
         </div>
     );
 };
