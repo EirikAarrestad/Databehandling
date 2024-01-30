@@ -1,4 +1,3 @@
-import React from "react";
 import "react-slideshow-image/dist/styles.css";
 import { Slide } from "react-slideshow-image";
 import ContinentGrowth from "./ContinentGrowth";
@@ -8,15 +7,6 @@ import styles from "./Slideshow.module.scss";
 const spanStyle = {
     padding: "20px",
     color: "#000000",
-};
-
-const divStyle = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundSize: "cover",
-    height: "500px",
-    position: "relative",
 };
 
 const slideImages = [
@@ -30,9 +20,12 @@ const slideImages = [
 
 const arrowStyle = {
     fontSize: "24px",
-    color: "red",
-    marginLeft: "200px",
-    marginRight: "200px",
+    color: "white",
+    marginLeft: "180px",
+    marginRight: "180px",
+    backgroundColor: "transparent",
+    borderRadius: "100%",
+    padding: "10px 15px",
 };
 
 const Slideshow = () => {
@@ -40,8 +33,8 @@ const Slideshow = () => {
         <div className={styles.container}>
             <div className="slide-container">
                 <Slide
-                    prevArrow={<div style={arrowStyle}>{"<-"}</div>}
-                    nextArrow={<div style={arrowStyle}>{"->"}</div>}
+                    prevArrow={<div style={arrowStyle}>{"tilbake"}</div>}
+                    nextArrow={<div style={arrowStyle}>{"framover"}</div>}
                 >
                     {slideImages.map((item, index) => (
                         <div key={index}>
