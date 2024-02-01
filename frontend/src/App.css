@@ -8,13 +8,6 @@
 }
 
 .grid-container {
-    /*
-    
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    
-    */
-
     h2 {
         margin-top: 20px;
         font-size: 25px;
@@ -75,6 +68,9 @@ button {
     cursor: pointer;
     transition: border-color 0.25s;
     border: #747bff 1px solid;
+    position: relative;
+    left: 875px;
+    bottom: 60px;
 }
 button:hover {
     border-color: #646cff;

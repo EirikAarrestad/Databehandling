@@ -2,6 +2,7 @@ import "react-slideshow-image/dist/styles.css";
 import { Slide } from "react-slideshow-image";
 import ContinentGrowth from "./ContinentGrowth";
 import Choloropleth from "./Choloropleth";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Import Font Awesome icons
 import styles from "./Slideshow.module.scss";
 
 const spanStyle = {
@@ -21,8 +22,8 @@ const slideImages = [
 const arrowStyle = {
     fontSize: "24px",
     color: "white",
-    marginLeft: "180px",
-    marginRight: "180px",
+    marginLeft: "120px",
+    marginRight: "120px",
     backgroundColor: "transparent",
     borderRadius: "100%",
     padding: "10px 15px",
@@ -33,8 +34,16 @@ const Slideshow = () => {
         <div className={styles.container}>
             <div className="slide-container">
                 <Slide
-                    prevArrow={<div style={arrowStyle}>{"tilbake"}</div>}
-                    nextArrow={<div style={arrowStyle}>{"framover"}</div>}
+                    prevArrow={
+                        <div style={arrowStyle}>
+                            <FaArrowLeft />
+                        </div>
+                    }
+                    nextArrow={
+                        <div style={arrowStyle}>
+                            <FaArrowRight />
+                        </div>
+                    }
                 >
                     {slideImages.map((item, index) => (
                         <div key={index}>
