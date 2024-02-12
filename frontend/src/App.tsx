@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
 import InputComponent from "./components/InputComponent";
-import ContinentCholoropleth from "./components/CountryCholoropleth";
+import ContinentCholoropleth from "./components/ContinentCholoropleth";
 import CountryGrowth from "./components/CountryGrowth";
 import Slideshow from "./components/Slideshow";
 
