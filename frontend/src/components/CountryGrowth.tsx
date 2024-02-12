@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Plot from "react-plotly.js";
 import { format } from "d3-format";
+import "../App.css";
 
 interface CountryGrowthProps {
     country: string;
@@ -38,7 +39,7 @@ const CountryGrowth: React.FC<CountryGrowthProps> = ({ country }) => {
     }
 
     return (
-        <div>
+        <div className="continentContainer">
             <Plot
                 data={[
                     {

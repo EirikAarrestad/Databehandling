@@ -1,40 +1,48 @@
-import "../App.css";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import "../App.css";
 import Plot from "react-plotly.js";
+import axios from "axios";
 import { format } from "d3-format";
 
-interface PopulationDataItem {
+interface PopulationData {
     country: string;
-    continent: string;
-    year: string;
     population: number;
 }
 
-const Choloropleth: React.FC = ({}) => {
-    const [populationData, setPopulationData] = useState<PopulationDataItem[]>(
-        []
-    );
+interface ContinentCholoroplethProps {
+    continent: string;
+}
+
+const ContinentCholoropleth: React.FC<ContinentCholoroplethProps> = (
+    continent
+) => {
+    const [populationData, setPopulationData] = useState<PopulationData[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(
-                    "http://localhost:5000/get_population_data"
+                    "http://localhost:5000/get_country_population_data",
+                    {
+                        params: {
+                            continent: continent.continent,
+                        },
+                    }
                 );
                 setPopulationData(response.data);
+                console.log(response.data);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         };
 
         fetchData();
-    }, []);
+    }, [continent]);
 
     const formatNumber = format(",");
 
     return (
-        <div className="continents">
+        <div className="continentContainer">
             <Plot
                 data={[
                     {
@@ -61,13 +69,10 @@ const Choloropleth: React.FC = ({}) => {
                 ]}
                 layout={{
                     geo: {
-                        projection_type: "natural earth",
-                        showcoastlines: true,
-                        showcountries: true,
-                        showocean: true,
-                        oceancolor: "LightBlue",
+                        scope: continent.continent.toLowerCase(),
+                        resolution: 50,
                     },
-                    title: "World Map - Population",
+                    title: "Population Map",
                     hovermode: "closest",
                     paper_bgcolor: "#1a1a1a",
                     font: {
@@ -80,4 +85,4 @@ const Choloropleth: React.FC = ({}) => {
     );
 };
 
-export default Choloropleth;
+export default ContinentCholoropleth;

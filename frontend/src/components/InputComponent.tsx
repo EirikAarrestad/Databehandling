@@ -1,5 +1,6 @@
 import jsonCountries from "./countries";
 import React, { useEffect, useState } from "react";
+import styles from "./Inputcomponent.module.scss";
 
 //"MAIN"
 
@@ -55,35 +56,39 @@ const InputComponent: React.FC<InputComponentProps> = ({
     };
 
     return (
-        <div className="inputContainers">
-            <label htmlFor="continent">Kontinent</label>
-            <select
-                name="continent"
-                id="continent"
-                value={selectedContinent}
-                onChange={handleContinentChange}
-            >
-                <option value="whole_">Hele verden</option>
-                {continents.map((continent) => (
-                    <option key={continent.value} value={continent.value}>
-                        {continent.name}
-                    </option>
-                ))}
-            </select>
-            <label htmlFor="country">Land</label>
-            <select
-                name="country"
-                id="country"
-                value={selectedCountry}
-                onChange={handleCountryChange}
-            >
-                <option value="all_">Se alle land...</option>
-                {filteredCountries.map((country) => (
-                    <option key={country.cca3} value={country.country}>
-                        {country.country}
-                    </option>
-                ))}
-            </select>
+        <div className={styles.inputContainer}>
+            <div className={styles.inputRow}>
+                <label htmlFor="continent">Kontinent</label>
+                <select
+                    name="continent"
+                    id="continent"
+                    value={selectedContinent}
+                    onChange={handleContinentChange}
+                >
+                    <option value="whole_">Hele verden</option>
+                    {continents.map((continent) => (
+                        <option key={continent.value} value={continent.value}>
+                            {continent.name}
+                        </option>
+                    ))}
+                </select>
+            </div>
+            <div className={styles.inputRow}>
+                <label htmlFor="country">Land</label>
+                <select
+                    name="country"
+                    id="country"
+                    value={selectedCountry}
+                    onChange={handleCountryChange}
+                >
+                    <option value="all_">Se alle land...</option>
+                    {filteredCountries.map((country) => (
+                        <option key={country.cca3} value={country.country}>
+                            {country.country}
+                        </option>
+                    ))}
+                </select>
+            </div>
         </div>
     );
 };

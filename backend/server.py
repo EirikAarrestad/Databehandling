@@ -2,9 +2,9 @@ import pandas as pd
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
-# bruker flask serverer til en backsend som kan behandle dataene fra .CSV filen og fra frontenden
+# Bruker flask serverer til en backsend som kan behandle dataene fra .CSV filen og fra frontenden
+# Tillater Cross Origin Resource Sharing (CORS) så vi kan sende data mellom servere
 app = Flask(__name__)
-# tillater Cross Origin Resource Sharing (CORS) så vi kan sende data mellom servere
 CORS(app)
 
 
@@ -57,7 +57,7 @@ def filter_data_by_year(df, target_year):
 
 
 @app.route("/continent_growth")
-def continent_growth_data():
+def get_continent_growth_data():
     """
     Retrieve continent growth data.
 
