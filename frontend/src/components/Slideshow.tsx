@@ -2,7 +2,7 @@ import "react-slideshow-image/dist/styles.css";
 import { Slide } from "react-slideshow-image";
 import ContinentGrowth from "./ContinentGrowth";
 import Choloropleth from "./Choloropleth";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa"; // Import Font Awesome icons
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import styles from "./Slideshow.module.scss";
 
 const spanStyle = {
@@ -34,6 +34,7 @@ const Slideshow = () => {
         <div className={styles.container}>
             <div className="slide-container">
                 <Slide
+                    autoplay={false}
                     prevArrow={
                         <div style={arrowStyle}>
                             <FaArrowLeft />
