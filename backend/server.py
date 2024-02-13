@@ -116,23 +116,6 @@ def country_growth_data():
     return jsonify(country_data)
 
 
-@app.route("/api/chart_data")
-def get_chart_data():
-    """
-    Retrieve aggregated chart data for the specified year.
-
-    Returns:
-    - jsonify: JSON response containing aggregated chart data.
-    """
-    chart_data = (
-        df.groupby("continent")["2023"]
-        .sum()
-        .reset_index(name="Population")
-        .to_dict(orient="records")
-    )
-    return jsonify(chart_data)
-
-
 @app.route("/get_population_data")
 def get_population_data():
     """
