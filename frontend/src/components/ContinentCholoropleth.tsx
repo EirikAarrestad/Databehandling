@@ -72,7 +72,7 @@ const ContinentCholoropleth: React.FC<ContinentCholoroplethProps> = (
                         scope: continent.continent.toLowerCase(),
                         resolution: 50,
                     },
-                    title: "Population Map",
+                    title: "Befolkningskart",
                     hovermode: "closest",
                     paper_bgcolor: "#1a1a1a",
                     font: {

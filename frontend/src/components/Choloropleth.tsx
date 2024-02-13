@@ -67,7 +67,7 @@ const Choloropleth: React.FC = ({}) => {
                         showocean: true,
                         oceancolor: "LightBlue",
                     },
-                    title: "World Map - Population",
+                    title: "Verdenskart - Befolkning",
                     hovermode: "closest",
                     paper_bgcolor: "#1a1a1a",
                     font: {

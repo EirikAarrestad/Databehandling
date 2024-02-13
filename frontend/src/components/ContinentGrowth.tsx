@@ -56,12 +56,12 @@ const ContinentGrowth = () => {
                     hovertemplate: "<b>%{text}</b><extra></extra>",
                     text: Object.values(item.populations).map((value) =>
                         formatNumber(value)
-                    ), // Use this line to specify the text for hoverinfo
+                    ),
                 }))}
                 layout={{
-                    title: "Population Growth Over the Years",
-                    xaxis: { title: "Year" },
-                    yaxis: { title: "Population" },
+                    title: "Befolkningsvekst",
+                    xaxis: { title: "År" },
+                    yaxis: { title: "Befolkning" },
                     paper_bgcolor: "#1a1a1a",
                     font: {
                         color: "white",

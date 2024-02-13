@@ -56,7 +56,7 @@ const CountryGrowth: React.FC<CountryGrowthProps> = ({ country }) => {
                     },
                 ]}
                 layout={{
-                    title: `Population Growth of ${country} Over the Years`,
+                    title: `Befolkningsvekst fra ${country}`,
                     xaxis: { title: "Year" },
                     yaxis: { title: "Population" },
                 }}
