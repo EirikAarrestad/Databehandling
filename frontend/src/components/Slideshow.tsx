@@ -19,6 +19,7 @@ const slideImages = [
     },
 ];
 
+// Styles på hvordan pilene skal se ut
 const arrowStyle = {
     fontSize: "24px",
     color: "white",
@@ -29,6 +30,7 @@ const arrowStyle = {
     padding: "10px 15px",
 };
 
+// Karusell
 const Slideshow = () => {
     return (
         <div className={styles.container}>

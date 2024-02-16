@@ -9,6 +9,7 @@ const App: React.FC = () => {
     const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
     const [selectedCountry, setSelectedCountry] = useState<string>("");
 
+    // Funksjon for å håndtere endringer i valg
     const handleOptionChange = (selectedValue: string) => {
         setSelectedOptions((prevSelectedOptions) => [
             ...prevSelectedOptions,
@@ -16,6 +17,9 @@ const App: React.FC = () => {
         ]);
     };
 
+    // Mulige kontinenter
+    // er er all_ alle land
+    // og whole_ hele verden
     const continents = [
         "Africa",
         "Antarctica",
@@ -28,6 +32,7 @@ const App: React.FC = () => {
         "whole_",
     ];
 
+    // Funksjon for å håndtere knappetrykk
     const handleButtonClick = () => {
         const lastSelectedOption = selectedOptions[selectedOptions.length - 1];
 
@@ -35,6 +40,7 @@ const App: React.FC = () => {
         console.log("Selected Country:", selectedCountry);
     };
 
+    // Sjekk om det valgte landet er en kontinent
     const isContinent = (country: string): boolean => {
         return continents.includes(country);
     };

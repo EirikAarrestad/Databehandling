@@ -11,6 +11,7 @@ interface CountryGrowthProps {
 const CountryGrowth: React.FC<CountryGrowthProps> = ({ country }) => {
     const [data, setData] = useState<number>();
 
+    // UseEffect hook som henter vekst med land som parameter
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -31,8 +32,8 @@ const CountryGrowth: React.FC<CountryGrowthProps> = ({ country }) => {
         fetchData();
     }, [country]);
 
+    // Lager en formateringsfunksjon med d3-format biblioteket
     const formatNumber = format(",");
-    console.log(data);
 
     if (!data) {
         return;

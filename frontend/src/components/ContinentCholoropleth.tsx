@@ -4,11 +4,13 @@ import Plot from "react-plotly.js";
 import axios from "axios";
 import { format } from "d3-format";
 
+// Interface for dataen som kommer fra http forespørselen
 interface PopulationData {
     country: string;
     population: number;
 }
 
+// Interface for props for grafen
 interface ContinentCholoroplethProps {
     continent: string;
 }
@@ -18,6 +20,8 @@ const ContinentCholoropleth: React.FC<ContinentCholoroplethProps> = (
 ) => {
     const [populationData, setPopulationData] = useState<PopulationData[]>([]);
 
+    // UseEffect hook som henter befolkningsdata fra et valgt land.
+    // Det sendes en ny http request når "continent" variablen blir endret.
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -30,7 +34,6 @@ const ContinentCholoropleth: React.FC<ContinentCholoroplethProps> = (
                     }
                 );
                 setPopulationData(response.data);
-                console.log(response.data);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -39,6 +42,7 @@ const ContinentCholoropleth: React.FC<ContinentCholoroplethProps> = (
         fetchData();
     }, [continent]);
 
+    // Lager en formateringsfunksjon med d3-format biblioteket
     const formatNumber = format(",");
 
     return (

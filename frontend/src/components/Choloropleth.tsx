@@ -4,6 +4,7 @@ import axios from "axios";
 import Plot from "react-plotly.js";
 import { format } from "d3-format";
 
+// TypeScript interface som viser hva ulike variabler sine typer skal være
 interface PopulationDataItem {
     country: string;
     continent: string;
@@ -16,6 +17,7 @@ const Choloropleth: React.FC = ({}) => {
         []
     );
 
+    // UseEffect hook for å hente befolkningsdata med axios, bruker deretter useState for å large dataene
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -31,6 +33,7 @@ const Choloropleth: React.FC = ({}) => {
         fetchData();
     }, []);
 
+    // Lager en formateringsfunksjon med d3-format biblioteket
     const formatNumber = format(",");
 
     return (

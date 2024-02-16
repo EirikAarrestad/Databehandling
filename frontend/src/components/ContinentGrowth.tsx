@@ -3,6 +3,7 @@ import axios from "axios";
 import Plot from "react-plotly.js";
 import { format } from "d3-format";
 
+// Interface for hvilke typer befolkningdata-variablene skal ha
 interface PopulationData {
     continent: string;
     populations: Record<string, number>;
@@ -11,6 +12,7 @@ interface PopulationData {
 const ContinentGrowth = () => {
     const [data, setData] = useState<PopulationData[]>([]);
 
+    // UseEffect hook som henter data for å vise befolkningsvekst fra 1970-2020
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -41,6 +43,7 @@ const ContinentGrowth = () => {
         fetchData();
     }, []);
 
+    // Lager en formateringsfunksjon med d3-format biblioteket
     const formatNumber = format(",");
 
     return (

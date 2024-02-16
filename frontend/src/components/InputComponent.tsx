@@ -2,11 +2,13 @@ import jsonCountries from "./countries";
 import React, { useEffect, useState } from "react";
 import styles from "./Inputcomponent.module.scss";
 
+// Definerer egenskapene til InputComponent
 interface InputComponentProps {
     selectedOption: string[];
     onOptionChange: (selectedValue: string) => void;
 }
 
+// Definerer kontinenter som skal bli brukt i programmet
 const continents = [
     { name: "Africa", value: "Africa" },
     { name: "Asia", value: "Asia" },
@@ -20,10 +22,12 @@ const InputComponent: React.FC<InputComponentProps> = ({
     selectedOption,
     onOptionChange,
 }) => {
+    // ulike useState funksjoner som blir brukt i løpet av programmet
     const [selectedContinent, setSelectedContinent] = useState<string>("");
     const [selectedCountry, setSelectedCountry] = useState<string>("");
     const [filteredCountries, setFilteredCountries] = useState(jsonCountries);
 
+    // useEffekt som trigges når valgt kontinent endres
     useEffect(() => {
         const filteredCountries =
             selectedContinent == "whole_"
@@ -36,6 +40,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
         console.log(selectedOption);
     }, [selectedContinent]);
 
+    // Funksjon for å håndtere endring av kontinent
     const handleContinentChange = (
         event: React.ChangeEvent<HTMLSelectElement>
     ) => {
@@ -44,6 +49,7 @@ const InputComponent: React.FC<InputComponentProps> = ({
         onOptionChange(selectedContinent);
     };
 
+    // Funksjon for å håndtere endring av land
     const handleCountryChange = (
         event: React.ChangeEvent<HTMLSelectElement>
     ) => {
